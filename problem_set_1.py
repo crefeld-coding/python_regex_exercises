@@ -7,31 +7,31 @@ class BasicMatching(unittest.TestCase):
     target strings, without matching the other strings.
     """
 
-    def test_pets(self):
-        pets = [
-            "cat",
-            "dog",
-            "pig",
-            "pup",
-            "bat",
+    def test_mentions_pet(self):
+        with_pet = [
+            "I like my cat.",
+            "A cat is a person's best friend.",
+            "Look at that cat sleeping in the window.",
+            "A cheetah is faster than any dog.",
+            "But I love my dogs too.",
             ]
-        not_pets = [
-            "hat",
-            "car",
-            "bar",
-            "can",
-            "van",
+        without_pet = [
+            "I instead like my Ferrari.",
+            "My brother likes many sports.",
+            "The top speed of an F1 car is faster than a cheetah.",
             ]
+
         pattern = r""  # TODO
+
         regex = re.compile(pattern)
 
-        for pet in pets:
-            b = bool(regex.fullmatch(pet))
-            self.assertTrue(b, f"Failed to match: {pet}")
+        for text in with_pet:
+            b = bool(regex.search(text))
+            self.assertTrue(b, f"Failed to match: {text}")
 
-        for other in not_pets:
-            b = bool(regex.fullmatch(other))
-            self.assertFalse(b, f"False match: {other}")
+        for text in without_pet:
+            b = bool(regex.search(text))
+            self.assertFalse(b, f"False match: {text}")
 
 
 if __name__ == '__main__':
