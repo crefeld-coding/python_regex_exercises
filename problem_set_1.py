@@ -59,5 +59,35 @@ class BasicMatching(unittest.TestCase):
             b = bool(regex.search(text))
             self.assertFalse(b, f"False match: {text}")
 
+    def test_zipcode_detector(self):
+        has_zip = [
+            "20252 is the personal zip for Smokey the Bear",
+            "Hey Google, what's the weather in 99501.",
+            "General Electric's Schenectady office claims the entire 12345 zip.",
+            "The lowest zip code, 00501, is in Holtsville, NY.",
+            "The exact zip for the Empire State Building is: 10118-0114.",
+            ]
+        no_zip = [
+            "T-minus 6 5 4 3 2 1...",
+            "You can reach me at (555) 555-5555 later today.",
+            "Pi is approximately 3.14159265.",
+            ]
+
+        for text in has_zip:
+            b = has_zipcode(text)
+            self.assertTrue(b, f"Failed to match: {text}")
+
+        for text in no_zip:
+            b = has_zipcode(text)
+            self.assertFalse(b, f"False match: {text}")
+
+
+def has_zipcode(text):
+    """Uses a RegEx to detect if the input mentions a zipcode.
+
+    Expects a string. Returns a boolean."""
+    return None  # TODO
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)  # Use 1 for more compact output.
