@@ -47,7 +47,7 @@ class BasicMatching(unittest.TestCase):
             "This 98 degrees CD is expen$ive!"
             ]
 
-        pattern = r""  # TODO
+        pattern = r"(\$[0-9]{1,3}\.?[0-9]{0,2})"  # TODOne
 
         regex = re.compile(pattern)
 
