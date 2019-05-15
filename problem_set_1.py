@@ -1,3 +1,4 @@
+import re
 import unittest
 
 
@@ -7,7 +8,30 @@ class BasicMatching(unittest.TestCase):
     """
 
     def test_pets(self):
-        self.assertTrue(True)
+        pets = [
+            "cat",
+            "dog",
+            "pig",
+            "pup",
+            "bat",
+            ]
+        not_pets = [
+            "hat",
+            "car",
+            "bar",
+            "can",
+            "van",
+            ]
+        pattern = r""  # TODO
+        regex = re.compile(pattern)
+
+        for pet in pets:
+            b = bool(regex.fullmatch(pet))
+            self.assertTrue(b, f"Failed to match: {pet}")
+
+        for other in not_pets:
+            b = bool(regex.fullmatch(other))
+            self.assertFalse(b, f"False match: {other}")
 
 
 if __name__ == '__main__':
