@@ -86,7 +86,9 @@ def has_zipcode(text):
     """Uses a RegEx to detect if the input mentions a zipcode.
 
     Expects a string. Returns a boolean."""
-    return None  # TODO
+    pattern = r"\b[0-9]{5}(?:\-[0-9]{4})?\b"
+    regex = re.compile(pattern)
+    return bool(regex.search(text))  # TODOne
 
 
 if __name__ == '__main__':
