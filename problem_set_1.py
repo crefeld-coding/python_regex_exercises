@@ -21,7 +21,7 @@ class BasicMatching(unittest.TestCase):
             "The top speed of an F1 car is faster than a cheetah.",
             ]
 
-        pattern = r""  # TODO
+        pattern = r"cat|dogs?"  # TODOne
 
         regex = re.compile(pattern)
 
